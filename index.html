@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> ❤️ hi, i'm your mommy </title>
+
+<style>
+body{
+    margin:0;
+    background:#ffe6f2;
+    text-align:center;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+h1{
+    color:#ff4d88;
+}
+
+img{
+    width:320px;
+    border-radius:20px;
+    box-shadow:0 0 20px pink;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+    background:pink;
+    font-size:18px;
+}
+
+.bunga{
+    position:fixed;
+    top:-50px;
+    font-size:28px;
+    animation:jatuh linear infinite;
+    pointer-events:none;
+}
+
+@keyframes jatuh{
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) translateX(80px) rotate(360deg);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>❤️ hi, i'm your mommy ❤️</h1>
+
+<img id="foto" src="IMG_20260311_194639_555.jpg">
+
+<br><br>
+
+<button onclick="sebelumnya()">⬅️ Sebelumnya</button>
+<button onclick="berikutnya()">➡️ Berikutnya</button>
+
+<audio controls loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const foto=[
+"IMG_20260311_194639_555.jpg",
+"IMG_20260311_213105_516.jpg",
+"IMG_20260311_213115_995.jpg",
+"IMG_20260316_154648_588.jpg",
+"IMG_20260316_154657_006.jpg",
+"IMG_20260323_202634_3.jpg",
+"IMG_20260720_120547_371.jpg",
+"IMG_20260720_120821_930.jpg",
+"IMG_20260720_120840_791.jpg",
+"IMG_20260720_120845_809.jpg"
+];
+
+let i=0;
+
+function berikutnya(){
+    i=(i+1)%foto.length;
+    document.getElementById("foto").src=foto[i];
+}
+
+function sebelumnya(){
+    i=(i-1+foto.length)%foto.length;
+    document.getElementById("foto").src=foto[i];
+}
+
+for(let x=0;x<30;x++){
+    let bunga=document.createElement("div");
+    bunga.className="bunga";
+    bunga.innerHTML="🌸";
+    bunga.style.left=Math.random()*100+"vw";
+    bunga.style.animationDuration=(4+Math.random()*5)+"s";
+    bunga.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(bunga);
+}
+</script>
+
+</body>
+</html>
